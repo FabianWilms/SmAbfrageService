@@ -1,9 +1,5 @@
 package de.wilms.sm.SMAbfrageService;
 
-/**
- * Copyright (c): it@M - Dienstleister für Informations- und Telekommunikationstechnik
- * der Landeshauptstadt München, 2017
- */
 public class DatenvolumenResponse {
     private double inclusive;
     private double available;

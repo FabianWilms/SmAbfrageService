@@ -24,10 +24,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Copyright (c): it@M - Dienstleister für Informations- und Telekommunikationstechnik
- * der Landeshauptstadt München, 2017
- */
 @RestController
 public class DatenvolumenService {
 

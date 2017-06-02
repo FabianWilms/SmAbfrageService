@@ -1,6 +1,5 @@
 package de.wilms.sm.SMAbfrageService;
 
-import org.apache.http.HttpHost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.boot.SpringApplication;
@@ -20,10 +19,8 @@ public class SmAbfrageServiceApplication {
 
     @Bean
     public RestTemplate restTemplate() {
-        HttpHost proxy = new HttpHost("10.158.0.79", 80);
         CloseableHttpClient httpClient = HttpClientBuilder
                 .create()
-                .setProxy(proxy)
                 .build();
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClient);
         return new RestTemplate(factory);
