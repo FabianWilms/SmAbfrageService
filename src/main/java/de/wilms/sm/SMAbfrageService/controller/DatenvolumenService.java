@@ -1,5 +1,6 @@
-package de.wilms.sm.SMAbfrageService;
+package de.wilms.sm.SMAbfrageService.controller;
 
+import de.wilms.sm.SMAbfrageService.entities.DatenvolumenResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

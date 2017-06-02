@@ -1,4 +1,4 @@
-package de.wilms.sm.SMAbfrageService;
+package de.wilms.sm.SMAbfrageService.entities;
 
 public class DatenvolumenResponse {
     private double inclusive;
