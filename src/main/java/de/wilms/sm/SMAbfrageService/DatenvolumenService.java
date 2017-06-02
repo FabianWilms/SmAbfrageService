@@ -61,19 +61,11 @@ public class DatenvolumenService {
 
     private String getSID(final String username, final String password) {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Host", "service.smartmobil.de");
-        headers.set("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:45.0) Gecko/20100101 Firefox/45.0");
-        headers.set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-        headers.set("Accept-Language", "de,en-US;q=0.7,en;q=0.3");
-        headers.set("Referer", "https://service.smartmobil.de/");
         headers.set("Cookie", "refid=24429; partnerid=24429; cookie_time=2017-04-25+05%3A54%3A42; _ga=GA1.2.204146203.1493092484; promotion_partner_id=24842; promotion_product_id=3248; promotion_channel_id=19386; promotion_customer_journey=%5B24842]; Bestandskunde=true; connect=smart3; _SID=3lo6nd0504dpdsue7n5unjj5v7; isCookieAllowed=true; _gid=GA1.2.1997218551.1496306791; smartmobil=o1vdkqqq5hsar4esrrm6jkbn85; te_sid=1a482b7f-53ce-eaea-bde9-f7fcf5c2a031; sw_UNC=MDAwMjczNmQ2MTcyovTxsf%2BGTP7FPs%2Frhc8DLNRBFYeJCY5a");
-        headers.setConnection("keep-alive");
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("UserLoginType[alias]", username);
-        map.add("UserLoginType[rememberUsername]", "1");
         map.add("UserLoginType[password]", password);
-        map.add("UserLoginType[logindata]", "eyJpc0Nvb2tpZUFsbG93ZWQiOnRydWUsImRldmljZVN5c3RlbSI6bnVsbCwiZGV2aWNlSWQiOm51bGwsImFkdmVydGlzaW5nSWQiOm51bGx9");
         map.add("UserLoginType[_token]", "c5ce512ea37e34ed7f89ef0706c057c485177412");
 
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(map, headers);
@@ -97,7 +89,6 @@ public class DatenvolumenService {
 
     private DatenvolumenResponse getDatenvolumen(final String sid) {
         HttpHeaders headers = new HttpHeaders();
-        headers.setCacheControl("no-cache");
         headers.set("Cookie", "_SID=" + sid + ";");
 
         HttpEntity requestEntity = new HttpEntity(headers);
