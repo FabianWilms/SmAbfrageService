@@ -1,5 +1,6 @@
 package de.wilms.sm.SMAbfrageService.controller;
 
+import de.wilms.sm.SMAbfrageService.entities.Credentials;
 import de.wilms.sm.SMAbfrageService.entities.DatenvolumenResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -17,9 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -40,10 +39,10 @@ public class DatenvolumenService {
     private String DATA_URL;
 
     @Cacheable("datavolumes")
-    @GetMapping("/datavolume")
-    public ResponseEntity<DatenvolumenResponse> getDatavolume(@RequestParam final String username, @RequestParam final String password) {
-        LOG.info("handling request for {}", username);
-        String sid = getSID(username, password);
+    @PostMapping("/datavolume")
+    public ResponseEntity<DatenvolumenResponse> getDatavolume(@RequestBody final Credentials credentials) {
+        LOG.info("handling request for {}", credentials.getUsername());
+        String sid = getSID(credentials.getUsername(), credentials.getPassword());
         if (sid == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         } else {
